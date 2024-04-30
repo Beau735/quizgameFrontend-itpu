@@ -4,13 +4,19 @@ export default {
   name: 'App',
   data() {
     return {
+      playerName: '',
       question: '',
       answers: {},
       selectedDiv: null,
       score: 0,
       categoryLevel: 0,
       amounts: ['1.000.000 Euro', '500.000 Euro', '125.000 Euro', '64.000 Euro', '32.000 Euro', '16.000 Euro', '8000 Euro', '4000 Euro', '2000 Euro', '1000 Euro', '500 Euro', '300 Euro', '200 Euro', '100 Euro', '50 Euro'],
-      
+    }
+  },
+  mounted() {
+    // Überprüfen, ob der Spielername im Router-Query-Objekt vorhanden ist
+    if (this.$route.query.player) {
+      this.playerName = this.$route.query.player; // Spielername aus dem Router-Query-Objekt holen
     }
   },
   methods: {
