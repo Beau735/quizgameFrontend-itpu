@@ -3,9 +3,9 @@
     <div class="page">
       <img src="../assets/logo.png" alt="brand-logo" id="brandLogo"/>
       <h3>Wer spielt&quest;</h3>
-      <input id="player" placeholder="Name">
+      <input v-model="playerName" id="player" placeholder="Name">
       <button class="close">
-        <RouterLink to="/game" id="play">Spielen</RouterLink>
+        <RouterLink :to="{ path: '/game', query: { player: playerName } }"  id="play">Spielen</RouterLink>
       </button>
     </div>
     <div class="gradient"></div>
@@ -14,6 +14,11 @@
 
 <script lang="js">
 export default {
+  data() {
+    return {
+      playerName: '' // Initialisieren des Spielernamens
+    };
+  },
   mounted() {
     document.addEventListener("mousemove", this.onMouseMove);
   },
